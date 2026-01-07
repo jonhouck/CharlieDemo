@@ -44,6 +44,16 @@
     npm start
     ```
 - **Expectation**: Output `Mock API running`.
+- **Action**: Run the employee roster generator.
+    ```bash
+    npm run generate-roster
+    ```
+- **Expectation**: Output `Successfully generated 500 employees...` and file `backend/data/roster.json` is created/updated.
+- **Action**: Run backend unit tests.
+    ```bash
+    npm run test
+    ```
+- **Expectation**: Tests pass, verifying generation logic.
 
 ### 3. Verify CI/CD
 - **Action**: (Optional) Run GitHub Actions locally using `act` or push to a branch and check the Actions tab on GitHub.
