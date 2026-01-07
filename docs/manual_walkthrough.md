@@ -55,6 +55,23 @@
     ```
 - **Expectation**: Tests pass, verifying generation logic.
 
-### 3. Verify CI/CD
+### 3. Verify Mock API & WebSocket (CHA-3)
+- **Action**: Start the backend server.
+    ```bash
+    cd backend
+    npm start
+    ```
+- **Expectation**: Output shows `Mock API running on http://localhost:4000` and `WebSocket server running`.
+- **Action**: Test Roster Endpoint.
+    ```bash
+    curl http://localhost:4000/api/roster
+    ```
+- **Expectation**: JSON response with list of employees.
+- **Action**: Test WebSocket (using wscat or similar, or just observe logs if we added them, but wscat is better).
+    - If `wscat` is installed: `wscat -c ws://localhost:4000`
+    - Or verify console logs in backend terminal showing "Simulating swipe".
+- **Expectation**: Receive `SWIPE_IN` events every 2 seconds.
+
+### 4. Verify CI/CD
 - **Action**: (Optional) Run GitHub Actions locally using `act` or push to a branch and check the Actions tab on GitHub.
 - **Expectation**: `build-and-test` job passes.
