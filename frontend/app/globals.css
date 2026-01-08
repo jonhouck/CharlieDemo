@@ -4,15 +4,15 @@
 
 :root {
   --background: #0f172a;
-  --foreground: #e2e8f0;
+  --foreground: #f8fafc;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #0f172a 40%, #020617 100%);
+  background-attachment: fixed;
+  font-feature-settings: "cv02", "cv03", "cv04", "ss01", "ss03";
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Scrollbar styling */

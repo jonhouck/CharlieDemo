@@ -65,27 +65,28 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <StatCard
-            title="Present Today"
-            value={presentCount}
-            icon={Building}
-            subtext="Currently on site"
-            className="border-indigo-500/30"
-          />
-          <StatCard
-            title="Utilization"
-            value={`${utilization}%`}
-            icon={Activity}
-            subtext="Office capacity usage"
-          />
-          <StatCard
-            title="Avg Arrival"
-            value="09:12 AM"
-            icon={Clock}
-            subtext="Based on recent scans"
-          />
+        {/* Stats Grid - Centered Portrait Tiles */}
+        <div className="flex justify-center mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full">
+            <StatCard
+              title="Present Today"
+              value={presentCount}
+              icon={Building}
+              subtext="Currently on site"
+            />
+            <StatCard
+              title="Utilization"
+              value={`${utilization}%`}
+              icon={Activity}
+              subtext="Office capacity usage"
+            />
+            <StatCard
+              title="Avg Arrival"
+              value="09:12 AM"
+              icon={Clock}
+              subtext="Based on recent scans"
+            />
+          </div>
         </div>
 
         {/* Filters and List */}
