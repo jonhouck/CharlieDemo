@@ -7,15 +7,15 @@ describe('StatCard', () => {
     it('renders title and value correctly', () => {
         render(
             <StatCard
-                title="Total Employees"
-                value={100}
+                title="Utilization"
+                value={"85%"}
                 icon={Users}
                 subtext="Test Subtext"
             />
         );
 
-        expect(screen.getByText('Total Employees')).toBeDefined();
-        expect(screen.getByText('100')).toBeDefined();
+        expect(screen.getByText('Utilization')).toBeDefined();
+        expect(screen.getByText('85%')).toBeDefined();
         expect(screen.getByText('Test Subtext')).toBeDefined();
     });
 });

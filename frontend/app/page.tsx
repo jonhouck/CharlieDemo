@@ -5,7 +5,7 @@ import { useEmployeeContext } from '@/context/EmployeeContext';
 import { StatCard } from '@/components/dashboard/StatCard';
 import { EmployeeList } from '@/components/dashboard/EmployeeList';
 import { FilterBar } from '@/components/dashboard/FilterBar';
-import { Users, Building, Clock, Activity } from 'lucide-react';
+import { Building, Clock, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -66,13 +66,7 @@ export default function Home() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatCard
-            title="Total Employees"
-            value={totalEmployees}
-            icon={Users}
-            subtext="Registered in system"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <StatCard
             title="Present Today"
             value={presentCount}
