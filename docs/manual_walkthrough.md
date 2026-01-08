@@ -92,3 +92,13 @@
     - Open Browser Console.
     - Verify log: "Connected to WebSocket".
     - (Optional) Use React DevTools to inspect `EmployeeProvider` context and watch `presentEmployeeIds` Set grow every few seconds as backend emits events.
+
+### 6. Verify Dashboard UI (CHA-5)
+- **Action**: Start Backend and Frontend as above.
+- **Action**: Open [http://localhost:3000](http://localhost:3000).
+- **Expectation**:
+    - **Visual**: Page loads with "Headquarters Overview" title in a dark, "Corporate Chic" theme.
+    - **Stats**: "Total Employees" card shows ~500. "Present Today" card updates in real-time.
+    - **List**: Grid of employee cards appears.
+    - **Filtering**: Click "Engineering" (or other dept) in Filter Bar. The list should filter to only show employees from that department.
+    - **Animations**: Cards should stagger in on load.
