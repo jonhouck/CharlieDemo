@@ -53,16 +53,9 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col md:flex-row md:items-center justify-between gap-4"
+          className="flex flex-col items-center justify-center pt-8 mb-8"
         >
-          <div>
-            <h1 className="text-3xl font-bold text-white tracking-tight">Headquarters Overview</h1>
-            <p className="text-slate-400 mt-1">Real-time presence monitoring</p>
-          </div>
-          <div className="flex items-center gap-2 bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-sm font-medium text-emerald-400">System Live</span>
-          </div>
+          <p className="text-slate-400 font-medium tracking-[0.2em] uppercase text-sm">Real-time presence monitoring</p>
         </motion.div>
 
         {/* Stats Grid - Centered Portrait Tiles - STRICT LAYOUT */}
@@ -86,6 +79,14 @@ export default function Home() {
               icon={Clock}
               subtext="Based on recent scans"
             />
+          </div>
+        </div>
+
+        {/* System Status - Centered below stats */}
+        <div className="flex justify-center mb-12">
+          <div className="flex items-center gap-2 px-4 py-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse box-shadow-glow-emerald" />
+            <span className="text-xs font-medium text-emerald-500/80 tracking-widest uppercase">System Live</span>
           </div>
         </div>
 

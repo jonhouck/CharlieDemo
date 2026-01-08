@@ -19,7 +19,7 @@ export function EmployeeCard({ employee, present = false }: EmployeeCardProps) {
         >
             <div className={cn(
                 "hover:bg-white/5 transition-all cursor-pointer group relative overflow-hidden",
-                "border border-white/5 rounded-lg bg-black/20 backdrop-blur-sm",
+                // "border border-white/5 rounded-lg bg-black/20 backdrop-blur-sm", // REMOVED per user feedback
                 "flex items-center p-2 gap-3"
             )}>
                 <div className="relative flex-shrink-0">
