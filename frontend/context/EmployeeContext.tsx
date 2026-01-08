@@ -28,9 +28,10 @@ export const EmployeeProvider = ({ children }: { children: ReactNode }) => {
                 }
                 const data = await response.json();
                 setRoster(data);
-            } catch (err: any) {
+            } catch (err: unknown) {
                 console.error('Error fetching roster:', err);
-                setError(err.message || 'Unknown error');
+                const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+                setError(errorMessage);
             } finally {
                 setLoading(false);
             }

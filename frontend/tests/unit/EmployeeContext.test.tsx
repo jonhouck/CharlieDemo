@@ -30,19 +30,18 @@ const TestComponent = () => {
 // WebSocket Mock
 class MockWebSocket {
     onopen: () => void = () => { };
-    onmessage: (event: any) => void = () => { };
+    onmessage: (event: { data: string }) => void = () => { };
     onclose: () => void = () => { };
     close: () => void = () => { };
     send: () => void = () => { };
 
-    constructor(url: string) {
+    constructor() {
         setTimeout(() => this.onopen(), 0);
     }
 }
 
 describe('EmployeeContext', () => {
-    let mockFetch: any;
-    let mockWS: unknown; // Use unknown to avoid strict type mismatch with global WebSocket
+    let mockFetch: ReturnType<typeof vi.fn>;
     // We need a way to capture the active websocket instance to emit events
     let activeSocket: MockWebSocket | null = null;
 
@@ -60,8 +59,9 @@ describe('EmployeeContext', () => {
         activeSocket = null; // Reset
         // Create a mock class that captures the instance
         const MockWSClass = class extends MockWebSocket {
-            constructor(url: string) {
-                super(url);
+            constructor() {
+                super();
+                // eslint-disable-next-line @typescript-eslint/no-this-alias
                 activeSocket = this;
             }
         }
