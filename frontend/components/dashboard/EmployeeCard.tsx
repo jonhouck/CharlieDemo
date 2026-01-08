@@ -23,10 +23,18 @@ export function EmployeeCard({ employee, present = false }: EmployeeCardProps) {
                 "flex items-center p-2 gap-3"
             )}>
                 <div className="relative flex-shrink-0">
-                    <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:border-indigo-500/50 transition-colors shadow-inner">
+                    <div
+                        className="rounded-full bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:border-indigo-500/50 transition-colors shadow-inner"
+                        style={{ width: '30px', height: '30px', minWidth: '30px', minHeight: '30px' }} // Explicit strict sizing
+                    >
                         {employee.avatarUrl ? (
                             /* eslint-disable-next-line @next/next/no-img-element */
-                            <img src={employee.avatarUrl} alt={employee.name} className="w-full h-full object-cover" />
+                            <img
+                                src={employee.avatarUrl}
+                                alt={employee.name}
+                                className="w-full h-full object-cover block" // Ensure block display
+                                style={{ width: '100%', height: '100%' }} // Double ensure
+                            />
                         ) : (
                             <span className="text-xs font-medium text-slate-400">
                                 {employee.name.charAt(0)}

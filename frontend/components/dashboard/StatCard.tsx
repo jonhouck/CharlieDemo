@@ -22,7 +22,8 @@ export function StatCard({ title, value, icon: Icon, subtext, className }: StatC
             <Card className={cn(
                 "relative overflow-hidden transition-all duration-300",
                 "bg-white/5 backdrop-blur-xl border-white/10 hover:bg-white/10 hover:border-indigo-500/30",
-                "flex flex-col items-center justify-center text-center p-6 aspect-[4/5] min-w-[200px]",
+                "flex flex-col items-center justify-center text-center p-6",
+                "w-[180px] h-[240px]", // Strict fixed sizing per user request
                 "shadow-2xl shadow-black/20",
                 className
             )}>
