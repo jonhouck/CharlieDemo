@@ -2,7 +2,6 @@ import React from 'react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Employee } from '@/types/employee';
-import { User, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface EmployeeCardProps {
@@ -24,6 +23,7 @@ export function EmployeeCard({ employee, present = false }: EmployeeCardProps) {
                     <div className="relative">
                         <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center overflow-hidden border-2 border-slate-600 group-hover:border-indigo-500/50 transition-colors">
                             {employee.avatarUrl ? (
+                                /* eslint-disable-next-line @next/next/no-img-element */
                                 <img src={employee.avatarUrl} alt={employee.name} className="w-full h-full object-cover" />
                             ) : (
                                 <span className="text-lg font-medium text-slate-300">

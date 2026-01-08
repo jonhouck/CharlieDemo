@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from '@/components/ui/Card';
 import { cn } from '@/lib/utils';
 
 interface FilterBarProps {

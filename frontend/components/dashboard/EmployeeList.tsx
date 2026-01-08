@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Employee } from '@/types/employee';
 import { EmployeeCard } from './EmployeeCard';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 interface EmployeeListProps {
     employees: Employee[];
@@ -11,7 +11,7 @@ interface EmployeeListProps {
 
 export function EmployeeList({ employees, presentEmployeeIds, departmentFilter }: EmployeeListProps) {
     const filteredEmployees = useMemo(() => {
-        let sorted = [...employees].sort((a, b) => a.name.localeCompare(b.name));
+        const sorted = [...employees].sort((a, b) => a.name.localeCompare(b.name));
 
         // Prioritize present employees
         sorted.sort((a, b) => {
