@@ -8,11 +8,12 @@ const mockEmployees = [
 ];
 
 describe('EmployeeList', () => {
-    it('renders all employees when filter is All', () => {
+    it('renders only present employees when filter is All', () => {
+        const presentIds = new Set(['1', '2']);
         render(
             <EmployeeList
                 employees={mockEmployees}
-                presentEmployeeIds={new Set()}
+                presentEmployeeIds={presentIds}
                 departmentFilter="All"
             />
         );
@@ -22,11 +23,26 @@ describe('EmployeeList', () => {
     });
 
     it('filters employees by department', () => {
+        const presentIds = new Set(['1', '2']);
         render(
             <EmployeeList
                 employees={mockEmployees}
-                presentEmployeeIds={new Set()}
+                presentEmployeeIds={presentIds}
                 departmentFilter="Engineering"
+            />
+        );
+
+        expect(screen.getByText('Alice Smith')).toBeDefined();
+        expect(screen.queryByText('Bob Jones')).toBeNull();
+    });
+
+    it('filters out non-present employees', () => {
+        const presentIds = new Set(['1']); // Only Alice
+        render(
+            <EmployeeList
+                employees={mockEmployees}
+                presentEmployeeIds={presentIds}
+                departmentFilter="All"
             />
         );
 
@@ -42,6 +58,6 @@ describe('EmployeeList', () => {
                 departmentFilter="All"
             />
         );
-        expect(screen.getByText(/No employees found/i)).toBeDefined();
+        expect(screen.getByText(/No active employees on site/i)).toBeDefined();
     });
 });

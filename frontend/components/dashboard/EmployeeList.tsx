@@ -10,41 +10,43 @@ interface EmployeeListProps {
 }
 
 export function EmployeeList({ employees, presentEmployeeIds, departmentFilter }: EmployeeListProps) {
-    const filteredEmployees = useMemo(() => {
-        const sorted = [...employees].sort((a, b) => a.name.localeCompare(b.name));
+    // Filter to ONLY show present employees (and filter by department if selected)
+    const activeEmployees = useMemo(() => {
+        // First filter by presence
+        const presentOnly = employees.filter(emp => presentEmployeeIds.has(emp.id));
 
-        // Prioritize present employees
-        sorted.sort((a, b) => {
-            const aPresent = presentEmployeeIds.has(a.id);
-            const bPresent = presentEmployeeIds.has(b.id);
-            if (aPresent && !bPresent) return -1;
-            if (!aPresent && bPresent) return 1;
-            return 0;
-        });
+        // Then sort by name
+        const sorted = presentOnly.sort((a, b) => a.name.localeCompare(b.name));
 
         if (departmentFilter === 'All') return sorted;
         return sorted.filter(emp => emp.department === departmentFilter);
     }, [employees, presentEmployeeIds, departmentFilter]);
 
-    if (filteredEmployees.length === 0) {
+    if (activeEmployees.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center py-20 text-slate-500">
-                <p>No employees found matching the criteria.</p>
+                <p>No active employees on site.</p>
             </div>
         );
     }
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2">
-            <AnimatePresence mode="popLayout">
-                {filteredEmployees.map((employee) => (
-                    <EmployeeCard
-                        key={employee.id}
-                        employee={employee}
-                        present={presentEmployeeIds.has(employee.id)}
-                    />
-                ))}
-            </AnimatePresence>
+        <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5">
+                <AnimatePresence mode="popLayout">
+                    {activeEmployees.map((employee, index) => (
+                        <div
+                            key={employee.id}
+                            className={`${index % 2 === 0 ? 'bg-white/5' : 'bg-orange-500/10'} rounded-sm overflow-hidden`}
+                        >
+                            <EmployeeCard
+                                employee={employee}
+                                present={true} // Always true as we filter above
+                            />
+                        </div>
+                    ))}
+                </AnimatePresence>
+            </div>
         </div>
     );
 }

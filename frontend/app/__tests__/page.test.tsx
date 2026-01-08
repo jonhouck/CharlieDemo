@@ -35,7 +35,7 @@ vi.mock('framer-motion', () => ({
 describe('Page', () => {
     it('renders correctly', () => {
         render(<Page />)
-        expect(screen.getByText('Headquarters Overview')).toBeDefined()
+        expect(screen.getByText('Real-time presence monitoring')).toBeDefined()
         expect(screen.getByText('Test User')).toBeDefined()
     })
 })
