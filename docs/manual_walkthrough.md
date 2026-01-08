@@ -75,3 +75,20 @@
 ### 4. Verify CI/CD
 - **Action**: (Optional) Run GitHub Actions locally using `act` or push to a branch and check the Actions tab on GitHub.
 - **Expectation**: `build-and-test` job passes.
+
+### 5. Verify Frontend State & WebSocket (CHA-4)
+- **Action**: Start the backend server (if not running).
+    ```bash
+    cd backend
+    npm start
+    ```
+- **Action**: Start the frontend server.
+    ```bash
+    cd frontend
+    npm run dev
+    ```
+- **Action**: Open [http://localhost:3000](http://localhost:3000).
+- **Expectation**:
+    - Open Browser Console.
+    - Verify log: "Connected to WebSocket".
+    - (Optional) Use React DevTools to inspect `EmployeeProvider` context and watch `presentEmployeeIds` Set grow every few seconds as backend emits events.
