@@ -65,9 +65,9 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Stats Grid - Centered Portrait Tiles */}
-        <div className="flex justify-center mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full">
+        {/* Stats Grid - Centered Portrait Tiles - STRICT LAYOUT */}
+        <div className="flex justify-center mb-10 w-full">
+          <div className="flex flex-row flex-wrap justify-center gap-6">
             <StatCard
               title="Present Today"
               value={presentCount}
