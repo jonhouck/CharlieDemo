@@ -44,5 +44,17 @@ npm run dev
 *   Dashboard runs on: `http://localhost:3000`
 
 ### Architecture
-- **Design Aesthetic**: "Corporate Chic"
-- **Tech Stack**: Next.js, Express, Socket.io, Tailwind CSS.
+The system consists of two main components communicating in real-time:
+
+1.  **Backend (Mock API & Badge Simulator)**:
+    *   **Technology**: Node.js, Express, `ws` (WebSocket).
+    *   **Role**: Serves as the source of truth for employee data. It initializes a roster of 500 mock employees and runs a simulation loop that periodically emits "SWIPE_IN" and "SWIPE_OUT" events via WebSocket to mimic real badge scanners.
+    *   **Data**: Stores in-memory status of present employees.
+
+2.  **Frontend (Dashboard)**:
+    *   **Technology**: Next.js, React, Tailwind CSS.
+    *   **Role**: Connects to the Backend WebSocket to receive badge events. It maintains a live "EmployeeContext" state and renders the roster in a "Corporate Chic" aesthetic.
+    *   **Key Features**: Real-time updates, department filtering (Engineering, Sales, etc.), and responsive design for headquarters displays.
+
+3.  **Data Flow**:
+    *   `Simulator` -> `Event Emission` -> `WebSocket` -> `Frontend Client` -> `UI Update`
